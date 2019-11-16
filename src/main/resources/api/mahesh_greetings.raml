@@ -1,0 +1,23 @@
+#%RAML 1.0
+version: 1
+title: mahesh_greetings
+description: greeting api devleoped by mahesh
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/05e90ad9-9d41-4fb7-8032-a5c9d36f3ca0/api/ # baseUri: http://localhost:8081/api/
+/greetings:
+  post:
+    body:
+      application/json:
+        properties:
+          name: 
+            type: string
+            required: true
+            default: "Mahesh"
+          
+    responses:
+      200:
+        body:
+          application/json:  
+            example:
+              {
+                "reply": "Hello Mahesh"
+              }
