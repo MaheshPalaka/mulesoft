@@ -49,7 +49,7 @@
 						<phase>deploy</phase>
 						<goals>
 
-								<goal>deploy</goal>
+								<goal>test</goal>
 
 						</goals>
 					</execution>
