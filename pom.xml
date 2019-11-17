@@ -48,7 +48,9 @@
 						<id>deploy</id>
 						<phase>deploy</phase>
 						<goals>
-							<goal>deploy</goal>
+							<goal>
+								<goal>deploy</goal>
+							</plugin-prefix>
 						</goals>
 					</execution>
 				</executions>
@@ -101,6 +103,10 @@
                 <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
+         <pluginRepository>
+        <id>mule-public</id>
+        <url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
+    </pluginRepository>
     </pluginRepositories>
 
 </project>
