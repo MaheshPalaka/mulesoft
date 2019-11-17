@@ -48,9 +48,9 @@
 						<id>deploy</id>
 						<phase>deploy</phase>
 						<goals>
-							<goal>
+
 								<goal>deploy</goal>
-							</plugin-prefix>
+
 						</goals>
 					</execution>
 				</executions>
