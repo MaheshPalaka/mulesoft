@@ -132,7 +132,7 @@ output application/json
 output application/json
 ---
 {
-  reply: "Hello Galy, watch this: https://www.youtube.com/watch?v=96M-PU4kX0w "
+  reply: "Hello Dear, please watch this: https://www.youtube.com/watch?v=96M-PU4kX0w "
 }]]></ee:set-payload>
             </ee:message>
         </ee:transform>
