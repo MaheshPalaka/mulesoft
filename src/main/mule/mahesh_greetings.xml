@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
-http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
     <http:listener-config name="mahesh_greetings-httpListenerConfig">
         <http:listener-connection host="0.0.0.0" port="8081" />
     </http:listener-config>
     <apikit:config name="mahesh_greetings-config" api="mahesh_greetings.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <api-gateway:autodiscovery apiId="15878545" doc:name="API Autodiscovery" doc:id="04b49030-0c70-437f-99c4-c25f064dca26" flowRef="mahesh_greetings-main" />
+	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="3b6d9714-d4fc-4347-999e-514dfaf5b84c" >
+		<salesforce:cached-basic-connection username="mahichat@gmail.com" password="Surya123" securityToken="DT2yUfpYJif4VpGN1MdWqVv8u" />
+	</salesforce:sfdc-config>
 	<flow name="mahesh_greetings-main">
         <http:listener config-ref="mahesh_greetings-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
@@ -136,5 +141,14 @@ output application/json
 }]]></ee:set-payload>
             </ee:message>
         </ee:transform>
+		<salesforce:retrieve doc:id="ae9f2ee2-f39b-48ef-8d03-affd15758b85" config-ref="Salesforce_Config" type="Account"/>
+		<ee:transform doc:name="Transform Message" doc:id="b5a5c281-4284-4516-9809-8f841a0ad894" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
     </flow>
 </mule>
