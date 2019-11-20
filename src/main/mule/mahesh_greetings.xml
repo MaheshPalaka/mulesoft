@@ -151,12 +151,11 @@ output application/json
 		<ee:transform doc:name="Transform Message" doc:id="b5a5c281-4284-4516-9809-8f841a0ad894" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw  2.0
-output application/json
+output application/java
 ---
-{
-	"AccountNumber":"963963",
-	"Name": "Jesus_Maheshaaaa"
-	
+payload map ( payload01 , indexOfPayload01 ) -> {
+	AccountNumber: uuid as String,
+	Name: "Jesus_Maheshaaaa"
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
