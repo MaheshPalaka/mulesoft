@@ -142,7 +142,8 @@ output application/json
             </ee:message>
         </ee:transform>
 		<salesforce:query doc:name="Query_SFDC" doc:id="92e8e9b9-0acb-4865-81b3-a0fad3dad225" config-ref="Salesforce_Config">
-			<salesforce:salesforce-query >SELECT AccountNumber,Active__c,BillingAddress,BillingCity,BillingCountry,BillingPostalCode,Id,Name FROM Account</salesforce:salesforce-query>
+			<salesforce:salesforce-query >SELECT AccountNumber,Active__c,BillingAddress,BillingCity,BillingCountry,BillingPostalCode,Id,Name FROM Account where Name = 'GenePoint'
+</salesforce:salesforce-query>
 		</salesforce:query>
 		<ee:transform doc:name="Transform Message" doc:id="b5a5c281-4284-4516-9809-8f841a0ad894" >
 			<ee:message >
