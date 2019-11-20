@@ -4,7 +4,7 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
     <http:listener-config name="mahesh_greetings-httpListenerConfig">
-        <http:listener-connection host="0.0.0.0" port="8081" />
+        <http:listener-connection host="localhost" port="8082" />
     </http:listener-config>
     <apikit:config name="mahesh_greetings-config" api="mahesh_greetings.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <api-gateway:autodiscovery apiId="15878545" doc:name="API Autodiscovery" doc:id="04b49030-0c70-437f-99c4-c25f064dca26" flowRef="mahesh_greetings-main" />
@@ -141,7 +141,9 @@ output application/json
 }]]></ee:set-payload>
             </ee:message>
         </ee:transform>
-		<salesforce:retrieve doc:id="ae9f2ee2-f39b-48ef-8d03-affd15758b85" config-ref="Salesforce_Config" type="Account"/>
+		<salesforce:query doc:name="Query" doc:id="92e8e9b9-0acb-4865-81b3-a0fad3dad225" config-ref="Salesforce_Config">
+			<salesforce:salesforce-query >SELECT AccountNumber,Active__c,BillingAddress,BillingCity,BillingCountry,BillingPostalCode,Id,Name FROM Account</salesforce:salesforce-query>
+		</salesforce:query>
 		<ee:transform doc:name="Transform Message" doc:id="b5a5c281-4284-4516-9809-8f841a0ad894" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
