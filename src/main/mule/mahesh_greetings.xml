@@ -155,7 +155,7 @@ output application/java
 ---
 payload map ( payload01 , indexOfPayload01 ) -> {
 	AccountNumber: uuid as String,
-	Name: "Jesus_Maheshaaaa"
+	Name:  "Jesus_Maheshaaaa"
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
