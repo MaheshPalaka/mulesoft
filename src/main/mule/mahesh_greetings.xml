@@ -154,8 +154,8 @@ output application/json
 output application/json
 ---
 {
-	"AccountNumber":uuid,
-	"Name": "Jesus_Mahesh"
+	"AccountNumber":"963963",
+	"Name": "Jesus_Maheshaaa"
 	
 }]]></ee:set-payload>
 			</ee:message>
