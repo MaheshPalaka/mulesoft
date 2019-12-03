@@ -7,7 +7,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
         <http:listener-connection host="0.0.0.0" port="8081" />
     </http:listener-config>
     <apikit:config name="mahesh_greetings-config" api="mahesh_greetings.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
-    <api-gateway:autodiscovery apiId="15878545" doc:name="API Autodiscovery" doc:id="04b49030-0c70-437f-99c4-c25f064dca26" flowRef="mahesh_greetings-main" />
 	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="3b6d9714-d4fc-4347-999e-514dfaf5b84c" >
 		<salesforce:cached-basic-connection username="mahichat@gmail.com" password="Surya123" securityToken="DT2yUfpYJif4VpGN1MdWqVv8u" />
 	</salesforce:sfdc-config>
